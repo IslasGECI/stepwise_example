@@ -11,7 +11,7 @@ describe("Get name models", {
   })
   it("Right name: stepwise-model", {
     expected <- "stepwise-model"
-    obtained <- stepwise_model(0)
+    obtained <- stepwise_model(0, 1)
     expect_equal(obtained, expected)
   })
 })
