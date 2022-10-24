@@ -1,11 +1,29 @@
 null_model <- function(data_for_null) {
-  return("null-model")
+  null_regression <- glm(
+    formula = Survived ~ 1,
+    data = data_for_null,
+    family = "binomial"
+  )
+  return(null_regression)
 }
 
 full_model <- function(data_for_full) {
-  return("full-model")
+  all_regression <- glm(
+    formula = Survived ~ Pclass + SibSp + Parch,
+    data = data_for_full,
+    family = "binomial"
+  )
+  return(all_regression)
 }
 
 stepwise_model <- function(null, full) {
-  return("stepwise-model")
+  step_regression <- stats::step(null,
+    scope = list(
+      lower = null,
+      upper = full
+    ),
+    direction = "both",
+    trace = 0
+  )
+  return(step_regression)
 }
