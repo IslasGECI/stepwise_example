@@ -15,8 +15,10 @@ describe("Get name models", {
     expect_equal(obtained, expected, tolerance = 1e-3)
   })
   it("Right name: stepwise-model", {
-    expected <- "stepwise-model"
-    obtained <- stepwise_model(0, 1)
-    expect_equal(obtained, expected)
+    titanic_step <- stepwise_model(titanic)
+    expected <- c(-0.0857, 0.3617, -0.2767)
+    obtained <- titanic_step$coefficients
+    names(obtained) <- c()
+    expect_equal(obtained, expected, tolerance = 1e-3)
   })
 })
