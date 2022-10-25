@@ -1,5 +1,5 @@
 describe("Get name models", {
-  titanic <- read.csv("tests/data/titanic_data.csv")
+  titanic <- read.csv("../data/titanic_data.csv")
   it("Right name: null-model", {
     titanic_null <- null_model(titanic)
     obtained <- titanic_null$coefficients
