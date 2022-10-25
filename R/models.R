@@ -16,7 +16,17 @@ full_model <- function(data_for_full) {
   return(all_regression)
 }
 
-stepwise_model <- function(null, full) {
+stepwise_model <- function(data) {
+  null <- glm(
+    formula = Survived ~ 1,
+    data = data,
+    family = "binomial"
+  )
+  full <- glm(
+    formula = Survived ~ Pclass + SibSp + Parch,
+    data = data,
+    family = "binomial"
+  )
   step_regression <- stats::step(null,
     scope = list(
       lower = null,
