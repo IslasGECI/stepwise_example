@@ -1,7 +1,8 @@
 describe("Get name models", {
   it("Right name: stepwise-model", {
-    expected <- "stepwise-model"
-    obtained <- get_stepwise_model(0)
+    titanic <- read.csv("../data/titanic_data.csv")
+    expected <- stepwise_model(titanic)
+    obtained <- get_stepwise_model(titanic)
     expect_equal(obtained, expected)
   })
 })
